@@ -1,6 +1,8 @@
-# flutter_app
+# Pokemon App para CI/CD Automatizado
 
-A new Flutter project.
+Un proyecto de flutter con animaciones, UI adecuada y con llamado a la red hacia un API REST.
+
+Proyecto flutter basado en https://github.com/iampawan/PokemonApp
 
 ## Getting Started
 
