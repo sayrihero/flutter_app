@@ -1,5 +1,7 @@
 import 'dart:convert';
-
+import 'dart:html';
+import 'dart:ui' as ui;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pokemon.dart';
 import 'package:flutter_app/pokemondetalle.dart';
@@ -95,14 +97,25 @@ crossAxisCount = 3;
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: <Widget>[
-                                  Container(
-                                    height: 100,
-                                    width: 100,
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: Image.network(poke.img!)
-                                                .image)),
-                                  ),
+                                  if (defaultTargetPlatform ==
+                                          TargetPlatform.android ||
+                                      defaultTargetPlatform ==
+                                          TargetPlatform.iOS)
+                                    Container(
+                                      height: 100,
+                                      width: 100,
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: Image.network(poke.img!)
+                                                  .image)),
+                                    )
+                                  else
+                                    SizedBox(
+                                        height: 100,
+                                        width: 100,
+                                        child: MyImage(
+                                          imageUrl: poke.img!,
+                                        )),
                                   Text(
                                     poke.name!,
                                     style: const TextStyle(
@@ -131,5 +144,24 @@ crossAxisCount = 3;
     } else {
       throw Exception('Fallo al cargar los datos');
     }
+  }
+}
+
+class MyImage extends StatelessWidget {
+  String? imageUrl;
+  MyImage({this.imageUrl});
+  @override
+  Widget build(BuildContext context) {
+// https://github.com/flutter/flutter/issues/41563
+// ignore: undefined_prefixed_name
+    ui.platformViewRegistry.registerViewFactory(
+        imageUrl ?? '',
+        (int viewId) => ImageElement()
+          ..src = imageUrl
+          ..style.height = '100%'
+          ..style.width = '100%');
+    return HtmlElementView(
+      viewType: imageUrl!,
+    );
   }
 }
