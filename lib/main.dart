@@ -39,7 +39,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var url =
-      "https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json";
+      "https://raw.githubusercontent.com/sayrihero/flutter_app/main/pokedex.json";
 
   int crossAxisCount = 0;
 
