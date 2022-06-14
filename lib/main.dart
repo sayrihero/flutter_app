@@ -19,7 +19,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.cyan,
       ),
-      home: const MyHomePage(title: 'Pokemon App',),
+      home: const MyHomePage(
+        title: 'Pokemon App',
+      ),
     );
   }
 }
@@ -34,16 +36,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var url = "https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json";
+  var url =
+      "https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json";
 
-int crossAxisCount = 0;
+  int crossAxisCount = 0;
 
   PokeHub? pokeHub;
 
   @override
   void initState() {
     super.initState();
-    fetchData();  
+    fetchData();
   }
 
   @override
@@ -63,14 +66,14 @@ crossAxisCount = 3;
       crossAxisCount = 4;
     }*/
     return Scaffold(
-      appBar: AppBar(        
+      appBar: AppBar(
         title: Text(widget.title),
       ),
       body: pokeHub == null
           ? const Center(
               child: CircularProgressIndicator(),
             )
-          :  GridView.count(                  
+          : GridView.count(
               crossAxisCount: 2,
               children: pokeHub!.pokemon!
                   .map((poke) => Padding(
@@ -97,7 +100,8 @@ crossAxisCount = 3;
                                     width: 100,
                                     decoration: BoxDecoration(
                                         image: DecorationImage(
-                                            image: Image.network(poke.img!).image)),
+                                            image: Image.network(poke.img!)
+                                                .image)),
                                   ),
                                   Text(
                                     poke.name!,
@@ -113,15 +117,19 @@ crossAxisCount = 3;
                         ),
                       ))
                   .toList(),
-              ),
-      drawer: const Drawer(),     
+            ),
+      drawer: const Drawer(),
     );
   }
-  
+
   void fetchData() async {
     var res = await http.get(Uri.parse(url));
     var decodedJson = jsonDecode(res.body);
-    pokeHub = PokeHub.fromJson(decodedJson);
-    setState(() {});
+    if (res.statusCode == 200) {
+      pokeHub = PokeHub.fromJson(decodedJson);
+      setState(() {});
+    } else {
+      throw Exception('Fallo al cargar los datos');
+    }
   }
 }
