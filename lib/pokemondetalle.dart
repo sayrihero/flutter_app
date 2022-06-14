@@ -20,6 +20,9 @@ class PokeDetalle extends StatelessWidget{
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                verticalDirection: VerticalDirection.down,                                
                 children: <Widget>[
                   const SizedBox(
                     height: 70.0,
@@ -104,7 +107,7 @@ class PokeDetalle extends StatelessWidget{
                   width: 200.0,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          fit: BoxFit.cover, image: NetworkImage(pokemon!.img!))),
+                          fit: BoxFit.cover, image: Image.network(pokemon!.img!).image)),
                 )),
           )
         ],

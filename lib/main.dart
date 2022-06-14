@@ -97,7 +97,7 @@ crossAxisCount = 3;
                                     width: 100,
                                     decoration: BoxDecoration(
                                         image: DecorationImage(
-                                            image: NetworkImage(poke.img!))),
+                                            image: Image.network(poke.img!).image)),
                                   ),
                                   Text(
                                     poke.name!,
