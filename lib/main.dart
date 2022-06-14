@@ -97,25 +97,14 @@ crossAxisCount = 3;
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: <Widget>[
-                                  if (defaultTargetPlatform ==
-                                          TargetPlatform.android ||
-                                      defaultTargetPlatform ==
-                                          TargetPlatform.iOS)
-                                    Container(
-                                      height: 100,
-                                      width: 100,
-                                      decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                              image: Image.network(poke.img!)
-                                                  .image)),
-                                    )
-                                  else
-                                    SizedBox(
-                                        height: 100,
-                                        width: 100,
-                                        child: MyImage(
-                                          imageUrl: poke.img!,
-                                        )),
+                                  Container(
+                                    height: 100,
+                                    width: 100,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: Image.network(poke.img!)
+                                                .image)),
+                                  ),
                                   Text(
                                     poke.name!,
                                     style: const TextStyle(
