@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pokemon.dart';
 
-class PokeDetalle extends StatelessWidget{
-
+class PokeDetalle extends StatelessWidget {
   Pokemon? pokemon;
 
   PokeDetalle({this.pokemon});
-    
+
   bodyWidget(BuildContext context) => Stack(
         children: <Widget>[
           Positioned(
             height: MediaQuery.of(context).size.height / 1.5,
             width: MediaQuery.of(context).size.width - 40,
             top: MediaQuery.of(context).size.height * 0.15,
-            left:MediaQuery.of(context).size.height * 0.03,
+            left: MediaQuery.of(context).size.height * 0.03,
             child: Card(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15.0),
@@ -22,14 +21,15 @@ class PokeDetalle extends StatelessWidget{
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                verticalDirection: VerticalDirection.down,                                
+                verticalDirection: VerticalDirection.down,
                 children: <Widget>[
                   const SizedBox(
                     height: 70.0,
                   ),
                   Text(
                     pokemon!.name!,
-                    style: const TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 25.0, fontWeight: FontWeight.bold),
                   ),
                   Text("Altura: ${pokemon!.height!}"),
                   Text("Peso: ${pokemon!.weight!}"),
@@ -60,7 +60,7 @@ class PokeDetalle extends StatelessWidget{
                             onSelected: (b) {}))
                         .toList(),
                   ),
-                   const Text("Evolución Previa",
+                  const Text("Evolución Previa",
                       style: TextStyle(fontWeight: FontWeight.bold)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -102,20 +102,24 @@ class PokeDetalle extends StatelessWidget{
             alignment: Alignment.topCenter,
             child: Hero(
                 tag: pokemon!.id!,
-                child: Container(
-                  height: 200.0,
-                  width: 200.0,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.cover, image: Image.network(pokemon!.img!).image)),
+                child: Column(
+                  children: [
+                    Container(
+                      height: 195.0,
+                      width: 195.0,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: Image.network(pokemon!.img!).image)),
+                    )
+                  ],
                 )),
           )
         ],
       );
 
-
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.cyan,
       appBar: AppBar(
@@ -125,5 +129,4 @@ class PokeDetalle extends StatelessWidget{
       body: bodyWidget(context),
     );
   }
-
 }
