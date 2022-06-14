@@ -71,7 +71,7 @@ crossAxisCount = 3;
               child: CircularProgressIndicator(),
             )
           :  GridView.count(                  
-              crossAxisCount: this.crossAxisCount,
+              crossAxisCount: 2,
               children: pokeHub!.pokemon!
                   .map((poke) => Padding(
                         padding: const EdgeInsets.all(2.0),
