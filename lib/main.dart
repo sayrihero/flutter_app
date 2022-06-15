@@ -141,7 +141,6 @@ class MyImage extends StatelessWidget {
   MyImage({this.imageUrl});
   @override
   Widget build(BuildContext context) {
-// https://github.com/flutter/flutter/issues/41563
 // ignore: undefined_prefixed_name
     ui.platformViewRegistry.registerViewFactory(
         imageUrl ?? '',
