@@ -4,6 +4,7 @@ import 'package:integration_test/integration_test.dart';
 
 import 'package:flutter_app/main.dart' as app;
 
+//https://www.youtube.com/watch?v=WPEsnJgW99M
 void main() {
   group('App Test', () {
     IntegrationTestWidgetsFlutterBinding.ensureInitialized();
