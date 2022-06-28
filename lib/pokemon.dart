@@ -13,10 +13,11 @@ class PokeHub {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    if (this.pokemon != null) {
-      data['pokemon'] = this.pokemon!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (pokemon != null) {
+      data['pokemon'] = pokemon!.map((v) => v.toJson()).toList();
     }
+
     return data;
   }
 }
@@ -40,24 +41,25 @@ class Pokemon {
   List<NextEvolution>? nextEvolution;
   List<PrevEvolution>? prevEvolution;
 
-  Pokemon(
-      {this.id,
-      this.num,
-      this.name,
-      this.img,
-      this.type,
-      this.height,
-      this.weight,
-      this.candy,
-      this.candyCount,
-      this.egg,
-      this.spawnChance,
-      this.avgSpawns,
-      this.spawnTime,
-      this.multipliers,
-      this.weaknesses,
-      this.nextEvolution,
-      this.prevEvolution});
+  Pokemon({
+    this.id,
+    this.num,
+    this.name,
+    this.img,
+    this.type,
+    this.height,
+    this.weight,
+    this.candy,
+    this.candyCount,
+    this.egg,
+    this.spawnChance,
+    this.avgSpawns,
+    this.spawnTime,
+    this.multipliers,
+    this.weaknesses,
+    this.nextEvolution,
+    this.prevEvolution,
+  });
 
   Pokemon.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -90,30 +92,29 @@ class Pokemon {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['id'] = this.id;
-    data['num'] = this.num;
-    data['name'] = this.name;
-    data['img'] = this.img;
-    data['type'] = this.type;
-    data['height'] = this.height;
-    data['weight'] = this.weight;
-    data['candy'] = this.candy;
-    data['candy_count'] = this.candyCount;
-    data['egg'] = this.egg;
-    data['spawn_chance'] = this.spawnChance;
-    data['avg_spawns'] = this.avgSpawns;
-    data['spawn_time'] = this.spawnTime;
-    data['multipliers'] = this.multipliers;
-    data['weaknesses'] = this.weaknesses;
-    if (this.nextEvolution != null) {
-      data['next_evolution'] =
-          this.nextEvolution!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['num'] = num;
+    data['name'] = name;
+    data['img'] = img;
+    data['type'] = type;
+    data['height'] = height;
+    data['weight'] = weight;
+    data['candy'] = candy;
+    data['candy_count'] = candyCount;
+    data['egg'] = egg;
+    data['spawn_chance'] = spawnChance;
+    data['avg_spawns'] = avgSpawns;
+    data['spawn_time'] = spawnTime;
+    data['multipliers'] = multipliers;
+    data['weaknesses'] = weaknesses;
+    if (nextEvolution != null) {
+      data['next_evolution'] = nextEvolution!.map((v) => v.toJson()).toList();
     }
-    if (this.prevEvolution != null) {
-      data['prev_evolution'] =
-          this.prevEvolution!.map((v) => v.toJson()).toList();
+    if (prevEvolution != null) {
+      data['prev_evolution'] = prevEvolution!.map((v) => v.toJson()).toList();
     }
+
     return data;
   }
 }
@@ -130,9 +131,10 @@ class NextEvolution {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['num'] = this.num;
-    data['name'] = this.name;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['num'] = num;
+    data['name'] = name;
+
     return data;
   }
 }
@@ -149,9 +151,10 @@ class PrevEvolution {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['num'] = this.num;
-    data['name'] = this.name;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['num'] = num;
+    data['name'] = name;
+
     return data;
   }
 }

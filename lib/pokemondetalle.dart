@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pokemon.dart';
 
+// ignore: must_be_immutable
 class PokeDetalle extends StatelessWidget {
   Pokemon? pokemon;
 
+  // ignore: use_key_in_widget_constructors
   PokeDetalle({this.pokemon});
 
+  // ignore: long-method
   bodyWidget(BuildContext context) => Stack(
         children: <Widget>[
           Positioned(
@@ -28,8 +31,11 @@ class PokeDetalle extends StatelessWidget {
                   ),
                   Text(
                     pokemon!.name!,
+                    key: const Key("txtPokemonName"),
                     style: const TextStyle(
-                        fontSize: 25.0, fontWeight: FontWeight.bold),
+                      fontSize: 25.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   Text("Altura: ${pokemon!.height!}"),
                   Text("Peso: ${pokemon!.weight!}"),
@@ -41,27 +47,35 @@ class PokeDetalle extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: pokemon!.type!
                         .map((t) => FilterChip(
-                            backgroundColor: Colors.amber,
-                            label: Text(t),
-                            onSelected: (b) {}))
+                              backgroundColor: Colors.amber,
+                              label: Text(t),
+                              // ignore: no-empty-block
+                              onSelected: (b) {},
+                            ))
                         .toList(),
                   ),
-                  const Text("Debilidades",
-                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  const Text(
+                    "Debilidades",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: pokemon!.weaknesses!
                         .map((w) => FilterChip(
-                            backgroundColor: Colors.red,
-                            label: Text(
-                              w,
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                            onSelected: (b) {}))
+                              backgroundColor: Colors.red,
+                              label: Text(
+                                w,
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                              // ignore: no-empty-block
+                              onSelected: (b) {},
+                            ))
                         .toList(),
                   ),
-                  const Text("Evolución Previa",
-                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  const Text(
+                    "Evolución Previa",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: pokemon!.prevEvolution == null
@@ -73,12 +87,15 @@ class PokeDetalle extends StatelessWidget {
                                     p.name!,
                                     style: const TextStyle(color: Colors.white),
                                   ),
+                                  // ignore: no-empty-block
                                   onSelected: (b) {},
                                 ))
                             .toList(),
                   ),
-                  const Text("Siguiente Evolución",
-                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  const Text(
+                    "Siguiente Evolución",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: pokemon!.nextEvolution == null
@@ -90,10 +107,11 @@ class PokeDetalle extends StatelessWidget {
                                     n.name!,
                                     style: const TextStyle(color: Colors.white),
                                   ),
+                                  // ignore: no-empty-block
                                   onSelected: (b) {},
                                 ))
                             .toList(),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -101,20 +119,23 @@ class PokeDetalle extends StatelessWidget {
           Align(
             alignment: Alignment.topCenter,
             child: Hero(
-                tag: pokemon!.id!,
-                child: Column(
-                  children: [
-                    Container(
-                      height: 195.0,
-                      width: 195.0,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: Image.network(pokemon!.img!).image)),
-                    )
-                  ],
-                )),
-          )
+              tag: pokemon!.id!,
+              child: Column(
+                children: [
+                  Container(
+                    height: 195.0,
+                    width: 195.0,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: Image.network(pokemon!.img!).image,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       );
 

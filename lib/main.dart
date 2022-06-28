@@ -1,7 +1,4 @@
 import 'dart:convert';
-import 'dart:html';
-import 'dart:ui' as ui;
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pokemon.dart';
 import 'package:flutter_app/pokemondetalle.dart';
@@ -41,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
   var url =
       "https://raw.githubusercontent.com/sayrihero/flutter_app/main/pokedex.json";
 
-  int crossAxisCount = 0;
+  int crossAxisCount = 2;
 
   PokeHub? pokeHub;
 
@@ -76,18 +73,20 @@ crossAxisCount = 3;
               child: CircularProgressIndicator(),
             )
           : GridView.count(
-              crossAxisCount: 2,
+              crossAxisCount: crossAxisCount,
               children: pokeHub!.pokemon!
                   .map((poke) => Padding(
                         padding: const EdgeInsets.all(2.0),
                         child: InkWell(
                           onTap: () {
                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => PokeDetalle(
-                                          pokemon: poke,
-                                        )));
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => PokeDetalle(
+                                  pokemon: poke,
+                                ),
+                              ),
+                            );
                           },
                           child: Hero(
                             tag: poke.id!,
@@ -101,9 +100,10 @@ crossAxisCount = 3;
                                     height: 100,
                                     width: 100,
                                     decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: Image.network(poke.img!)
-                                                .image)),
+                                      image: DecorationImage(
+                                        image: Image.network(poke.img!).image,
+                                      ),
+                                    ),
                                   ),
                                   Text(
                                     poke.name!,
@@ -111,7 +111,7 @@ crossAxisCount = 3;
                                       fontSize: 20.0,
                                       fontWeight: FontWeight.bold,
                                     ),
-                                  )
+                                  ),
                                 ],
                               ),
                             ),
@@ -129,27 +129,10 @@ crossAxisCount = 3;
     var decodedJson = jsonDecode(res.body);
     if (res.statusCode == 200) {
       pokeHub = PokeHub.fromJson(decodedJson);
+      // ignore: no-empty-block
       setState(() {});
     } else {
       throw Exception('Fallo al cargar los datos');
     }
-  }
-}
-
-class MyImage extends StatelessWidget {
-  String? imageUrl;
-  MyImage({this.imageUrl});
-  @override
-  Widget build(BuildContext context) {
-// ignore: undefined_prefixed_name
-    ui.platformViewRegistry.registerViewFactory(
-        imageUrl ?? '',
-        (int viewId) => ImageElement()
-          ..src = imageUrl
-          ..style.height = '100%'
-          ..style.width = '100%');
-    return HtmlElementView(
-      viewType: imageUrl!,
-    );
   }
 }

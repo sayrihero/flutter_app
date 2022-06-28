@@ -18,9 +18,12 @@ void main() {
       await tester.tap(cartaPokemon);
       await tester.pumpAndSettle();
 
-      final nombrePokemon = find.byType(Text).first;
-      expect(tester.getSemantics(nombrePokemon),
-          matchesSemantics(value: "Bulbasaur"));
+      final nombrePokemon = find.byKey(const Key("txtPokemonName"));
+      expect(
+          tester.getSemantics(nombrePokemon),
+          matchesSemantics(
+              label:
+                  "Bulbasaur\nAltura: 0.71 m\nPeso: 6.9 kg\nTipos\nDebilidades\nEvolución Previa\nNo tiene evoluciones previas.\nSiguiente Evolución"));
     });
   });
 }
