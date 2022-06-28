@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Pokemon App CI/CD',
       theme: ThemeData(
-        primarySwatch: Colors.cyan,
+        primarySwatch: Colors.deepOrange,
       ),
       home: const MyHomePage(
         title: 'Pokemon App',
@@ -50,20 +50,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    /*double tamPantalla = MediaQuery.of(context).size.width;
-    if( tamPantalla < 350.0 )
-    {
+    double tamPantalla = MediaQuery.of(context).size.width;
+    if (tamPantalla < 350.0) {
       crossAxisCount = 1;
     }
-    if(tamPantalla >= 350.0 && tamPantalla <= 520.0){
-crossAxisCount = 2;
+    if (tamPantalla >= 350.0 && tamPantalla <= 520.0) {
+      crossAxisCount = 2;
     }
-    if(tamPantalla > 520.0 && tamPantalla <= 950.0){
-crossAxisCount = 3;
+    if (tamPantalla > 520.0 && tamPantalla <= 950.0) {
+      crossAxisCount = 3;
     }
-    if(tamPantalla > 950.0) {
+    if (tamPantalla > 950.0) {
       crossAxisCount = 4;
-    }*/
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
