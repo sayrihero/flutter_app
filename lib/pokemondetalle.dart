@@ -142,7 +142,7 @@ class PokeDetalle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.indigo,
+      backgroundColor: Colors.deepOrange,
       appBar: AppBar(
         elevation: 0.0,
         title: Text(pokemon!.name!),
