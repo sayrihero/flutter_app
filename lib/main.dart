@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Pokemon App CI/CD',
       theme: ThemeData(
-        primarySwatch: Colors.deepOrange,
+        primarySwatch: Colors.lightGreen,
       ),
       home: const MyHomePage(
         title: 'Pokemon App',
